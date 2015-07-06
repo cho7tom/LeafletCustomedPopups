@@ -46,8 +46,14 @@ shinyServer(function(input, output) {
   })
   
   i <- 1:10
-  img <- paste0("'", i, ".png'")
-  custompopup5 <- paste0("<div><h3><b>You selected: </b></h3>", custompopup1, "</br></br><img src='", img, " width = '100'/></div>")
+  # Get rid of the "'" from the variable definition.
+  # img <- paste0("'", i, ".png'")
+  img <- paste0(i, ".png'")
+  custompopup5 <- paste0("<div><h3><b>You selected: </b></h3>", 
+                         custompopup1, 
+                         "</br></br><center><img src='", 
+                         img, 
+                         " width = '100'/></center></div>")
   
   output$t5 <- renderLeaflet({
     m5 = leaflet() %>% addTiles()
